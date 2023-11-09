@@ -25,11 +25,11 @@ public class MainActivity extends AppCompatActivity {
 
         listaLibros= (ListView) findViewById(R.id.listaLibros);
         ArrayList<Libro> libros = new ArrayList<>();
-        libros.add(new Libro("Acceso a datos",420,R.drawable.acceso_datos));
-        libros.add(new Libro("Lenguaje de marcas",250,R.drawable.lenguaje_marcas));
-        libros.add(new Libro("Sistemas informaticos",321,R.drawable.sistemas_informaticos));
-        libros.add(new Libro("Administracion de bases",312,R.drawable.administracion_bases));
-        libros.add(new Libro("Emtornos",541,R.drawable.entornos));
+        libros.add(new Libro("Acceso a datos",420,R.drawable.acceso_datos,"El libro está dividido en 6 capítulos que se corresponden con los contenidos del título. El libro tiene una orientación práctica; se exponen los contenidos teóricos seguidos de ejemplos y actividades diseñadas para facilitar la comprensión de los mismos. Se parte de los conocimientos previos que el alumno ha adquirido en el primer curso en los módulos profesionales de Bases de datos, Programación (Java), Lenguajes de marcas y sistemas de gestión de información y Entornos de desarrollo."));
+        libros.add(new Libro("Lenguaje de marcas",250,R.drawable.lenguaje_marcas,"En este libro se desarrollan los contenidos del módulo profesional Lenguajes de marcas y sistemas de gestión de información de los Ciclos Formativos de Grado Superior de Desarrollo de Aplicaciones Multiplataforma, Desarrollo de Aplicaciones Web y Administración de Sistemas Informáticos en Red, pertenecientes a la familia profesional de Informática y Comunicaciones."));
+        libros.add(new Libro("Sistemas informaticos",321,R.drawable.sistemas_informaticos,"Este libro desarrolla los contenidos del módulo profesional de Sistemas Informáticos y Redes Locales, del Ciclo Formativo de grado superior de Sistemas de Telecomunicaciones e Informáticos, de la familia profesional de Electricidad y Electrónica.\n"));
+        libros.add(new Libro("Administracion de bases",312,R.drawable.administracion_bases,"El contenido de este libro tiene una orientación práctica. En el Capítulo 1 se estudian los procesos, actividades y tareas involucradas en el desarrollo, explotación y mantenimiento de un producto de software. Se estudia la relación entre un programa informático y los distintos componentes del ordenador, se analizan diferentes lenguajes de programación, se estudian los diferentes estados por los que pasa un programa desde que se escribe hasta que se ejecuta en el ordenador, se introduce el concepto de máquina virtual."));
+        libros.add(new Libro("Emtornos",541,R.drawable.entornos,"Este texto incluye, como parte de la automatización de tareas (scripts), los backups y restores de bases de datos. Además, se ha explicado extensamente el Recovery Manager (rman) de Oracle, que se considera fundamental en la formación de cualquier DBA. En cualquier caso, el objetivo se mantiene: la formación de administradores de bases de datos actualizados, versátiles y competentes."));
 
         adapterLibros = new MiArrayAdapterLibros(this,libros);
 
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 Libro libros = (Libro) adapterLibros.getItem(position);
                 Toast.makeText(view.getContext(),"Libro: "+ libros.getTitulo(),Toast.LENGTH_LONG).show();
 
-                intent(position);
+                intent(view,position);
 
             }
         });
@@ -48,9 +48,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void intent(int position){
+    public void intent(View view,int position){
         Intent i = new Intent(this,Activity_Layout_Detalles.class);
-        //i.putExtra(adapterLibros.getItem(i));
+        i.putExtra("titulo",adapterLibros.getItem(position).getTitulo());
+        i.putExtra("imagen",adapterLibros.getItem(position).getImagen());
+        i.putExtra("paginas",adapterLibros.getItem(position).getPaginas());
+        i.putExtra("descripcion",adapterLibros.getItem(position).getDescripcion());
+        startActivity(i);
     }
 
 }

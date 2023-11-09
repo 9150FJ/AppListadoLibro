@@ -6,10 +6,22 @@ public class Libro {
 
     private int imagen;
 
-    public Libro(String titulo, int paginas, int imagen) {
+    private String descripcion;
+
+    public Libro(String titulo, int paginas, int imagen,String descripcion) {
         this.titulo = titulo;
         this.paginas = paginas;
         this.imagen = imagen;
+        this.descripcion=descripcion;
+    }
+
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public int getImagen() {
