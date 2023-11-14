@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AppListadoLibro"
         tools:targetApi="31">
         <activity
+            android:name=".Activity_Chat"
+            android:exported="false" />
+        <activity
             android:name=".Activity_Layout_Detalles"
             android:exported="false" />
         <activity

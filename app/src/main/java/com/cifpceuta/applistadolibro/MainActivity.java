@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         listaLibros.setAdapter(adapterLibros);
 
     }
-
     public void intent(View view,int position){
         Intent i = new Intent(this,Activity_Layout_Detalles.class);
         i.putExtra("titulo",adapterLibros.getItem(position).getTitulo());
